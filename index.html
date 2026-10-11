@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffeaf3">
+<title>برای دیانا خانوم 💗</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #ee6d9e;
+  --deep: #b84276;
+  --ink: #713d56;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "B Nazanin", "BNazanin", Tahoma, serif;
+  color: var(--ink);
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 15% 15%, white 0 5%, transparent 28%),
+    radial-gradient(circle at 88% 82%, #ffd4e5 0 5%, transparent 28%),
+    linear-gradient(145deg, #fff8fb, #ffe6f0);
+  display: grid;
+  place-items: center;
+  padding: 20px 12px;
+}
+
+#hearts, #burst {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+#hearts { z-index: 0; }
+#burst { z-index: 5; }
+
+main {
+  width: min(100%, 560px);
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  width: 100%;
+  text-align: center;
+  background: #ffffffdf;
+  border: 1px solid white;
+  border-radius: 28px;
+  padding: clamp(22px, 6vw, 42px) 20px;
+  box-shadow: 0 22px 65px #b8497820;
+  backdrop-filter: blur(10px);
+  animation: appear .65s ease both;
+}
+
+.hidden {
+  display: none !important;
+}
+
+h1 {
+  font-size: clamp(25px, 7vw, 38px);
+  line-height: 1.6;
+  color: #ad4273;
+  margin: 8px 0;
+}
+
+p {
+  font-size: clamp(17px, 4.5vw, 21px);
+  line-height: 1.9;
+}
+
+.kicker, .hint {
+  color: #bd7193;
+}
+
+.big-heart {
+  font-size: 70px;
+  display: inline-block;
+  animation: beat 1.7s infinite;
+}
+
+button {
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.btnrow {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.btn {
+  min-height: 52px;
+  padding: 10px 22px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px #cf5b8b25;
+}
+
+.yes {
+  background: linear-gradient(135deg, #f78bb2, #db578e);
+  color: white;
+}
+
+.no {
+  background: white;
+  border: 1px solid #f4bfd4;
+  color: #a64c76;
+}
+
+.heart {
+  position: absolute;
+  bottom: -40px;
+  color: #ed6e9f;
+  opacity: 0;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0);
+    opacity: 0;
+  }
+  15% { opacity: .7; }
+  100% {
+    transform: translateY(-115vh) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.13); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* پاکت نامه */
+.envelope-btn {
+  display: block;
+  background: transparent;
+  padding: 0;
+  margin: 28px auto 12px;
+}
+
+.envelope {
+  position: relative;
+  width: min(290px, 75vw);
+  height: 180px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffb9d2, #ed78a5);
+  box-shadow: 0 8px 0 #d85e90, 0 18px 30px #c54f822e;
+  overflow: hidden;
+  margin: auto;
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(34deg, transparent 49%, #ffdce8 50%) left / 50% 100% no-repeat,
+    linear-gradient(-34deg, transparent 49%, #ffdce8 50%) right / 50% 100% no-repeat;
+}
+
+.flap {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 145px solid transparent;
+  border-right: 145px solid transparent;
+  border-top: 112px solid #f7a0bf;
+  transform-origin: top;
+  transition: transform .65s;
+}
+
+.seal {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  transition: opacity .3s, transform .5s;
+}
+
+.envelope-btn.open .flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope-btn.open .seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.7);
+}
+
+/* نامه */
+.letter {
+  margin-top: 22px;
+  text-align: right;
+  padding: 24px;
+  border: 1px solid #f5c1d6;
+  border-radius: 20px;
+  background: linear-gradient(#fff, #fff8fb);
+  box-shadow: inset 0 0 0 5px #fff0f6;
+  animation: letterReveal .8s ease both;
+}
+
+.letter p {
+  margin-bottom: 14px;
+}
+
+.signature {
+  text-align: left;
+  color: #c14c82;
+  font-weight: bold;
+}
+
+@keyframes letterReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(.88);
+    filter: blur(8px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.02);
+    filter: blur(0);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+/* افکت ویژه هنگام باز شدن نامه */
+.burst-piece {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  font-size: clamp(22px, 5vw, 35px);
+  animation: burstOut 1.4s ease-out forwards;
+}
+
+@keyframes burstOut {
+  0% {
+    transform: translate(-50%, -50%) scale(.2) rotate(0);
+    opacity: 0;
+  }
+  15% { opacity: 1; }
+  100% {
+    transform:
+      translate(
+        calc(-50% + var(--x)),
+        calc(-50% + var(--y))
+      )
+      scale(1.2)
+      rotate(var(--r));
+    opacity: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .card { border-radius: 24px; }
+  .btn { flex: 1 1 130px; }
+  .envelope { height: 46vw; max-height: 180px; }
+  .flap {
+    border-left-width: 37vw;
+    border-right-width: 37vw;
+    border-top-width: 29vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts" aria-hidden="true"></div>
+<div id="burst" aria-hidden="true"></div>
+
+<main>
+  <!-- سؤال اول -->
+  <section class="card" id="question">
+    <div class="big-heart">💗</div>
+
+    <p class="kicker">یه سورپرایز کوچولو برای تو</p>
+
+    <h1>دیانا خانوم، آماده‌ای نامه‌ت رو باز کنی؟</h1>
+
+    <p>یه پاکت منتظرته… فقط کافیه تصمیم بگیری. 🎀</p>
+
+    <div class="btnrow">
+      <button class="btn yes" id="yes">
+        آره، بازش کنیم 💌
+      </button>
+
+      <button class="btn no" id="no">
+        نه هنوز 🙈
+      </button>
+    </div>
+
+    <p class="hint" id="hint">
+      قول می‌دم یه چیز قشنگ منتظرته.
+    </p>
+  </section>
+
+  <!-- صفحه پاکت -->
+  <section class="card hidden" id="letterPage">
+    <div class="big-heart">💌</div>
+
+    <p class="kicker">فقط برای دیانا خانوم</p>
+
+    <h1>نامه‌ت اینجاست</h1>
+
+    <p>روی پاکت بزن تا باز بشه…</p>
+
+    <button
+      class="envelope-btn"
+      id="envelopeBtn"
+      aria-label="باز کردن نامه"
+    >
+      <div class="envelope">
+        <div class="flap"></div>
+        <div class="seal">💗</div>
+      </div>
+    </button>
+
+    <p class="hint" id="envelopeHint">
+      یه ضربه‌ی کوچولو به پاکت بزن ✨
+    </p>
+
+    <!-- متن نامه -->
+    <article class="letter hidden" id="letter">
+      <p>دیانا جانم 🌷</p>
+
+      <p>
+       روز دختر بهونه ای شد تا بتونم بهت بگم که لبخند تو چقدر به زیبایی های دنیا اضافه میکنه. نتونستم بیادت نباشم دخترم. روزت مبارک فرشته ی خداوند روی زمین💗
+      </p>
+
+      <p class="signature">
+        با کلی حس خوب، برای تو 🎀
+      </p>
+    </article>
+  </section>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+
+/* قلب‌های شناور */
+function makeHeart() {
+  const h = document.createElement("span");
+  h.className = "heart";
+  h.textContent = ["♡", "♥", "ღ", "💕"][
+    Math.random() * 4 | 0
+  ];
+
+  h.style.left = Math.random() * 100 + "%";
+  h.style.fontSize = (15 + Math.random() * 23) + "px";
+  h.style.animationDuration = (7 + Math.random() * 7) + "s";
+
+  $("hearts").appendChild(h);
+
+  setTimeout(() => h.remove(), 15000);
+}
+
+setInterval(makeHeart, 430);
+
+/* دکمه بله */
+$("yes").onclick = () => {
+  $("question").classList.add("hidden");
+  $("letterPage").classList.remove("hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+/* دکمه نه فرار می‌کند */
+let dodges = 0;
+
+function dodge() {
+  dodges++;
+
+  const messages = [
+    "اوه! هنوز آماده نیستی؟ 😜",
+    "نزدیک بود! دوباره امتحان کن 🙈",
+    "این دکمه هم دلش می‌خواد نامه رو ببینی 💗"
+  ];
+
+  $("hint").textContent = messages[Math.min(dodges - 1, 2)];
+
+  const b = $("no");
+  const r = b.getBoundingClientRect();
+
+  b.style.position = "fixed";
+  b.style.zIndex = "4";
+  b.style.left =
+    (10 + Math.random() * Math.max(0, innerWidth - r.width - 20)) + "px";
+  b.style.top =
+    (10 + Math.random() * Math.max(0, innerHeight - r.height - 20)) + "px";
+}
+
+$("no").addEventListener("pointerenter", dodge);
+
+$("no").addEventListener("click", event => {
+  event.preventDefault();
+  dodge();
+});
+
+$("no").addEventListener("touchstart", event => {
+  event.preventDefault();
+  dodge();
+}, { passive: false });
+
+/* باز و بسته شدن پاکت و افکت ویژه */
+$("envelopeBtn").onclick = () => {
+  const opening = $("letter").classList.contains("hidden");
+
+  $("letter").classList.toggle("hidden");
+  $("envelopeBtn").classList.toggle("open", opening);
+
+  $("envelopeHint").textContent = opening
+    ? "سورپرایزت باز شد 💗"
+    : "پاکت رو دوباره بستی؛ هر وقت خواستی بازش کن";
+
+  if (!opening) return;
+
+  const bits = ["💗", "💕", "🎀", "✨", "🌸", "💖", "✦"];
+  const layer = $("burst");
+
+  for (let i = 0; i < 46; i++) {
+    const e = document.createElement("span");
+    e.className = "burst-piece";
+    e.textContent = bits[Math.random() * bits.length | 0];
+
+    const angle = Math.PI * 2 * i / 46;
+    const distance =
+      100 + Math.random() * Math.min(innerWidth, innerHeight) * 0.48;
+
+    e.style.setProperty("--x", Math.cos(angle) * distance + "px");
+    e.style.setProperty("--y", Math.sin(angle) * distance + "px");
+    e.style.setProperty("--r", (Math.random() * 500 - 250) + "deg");
+
+    layer.appendChild(e);
+    setTimeout(() => e.remove(), 1500);
+  }
+
+  if (navigator.vibrate) {
+    navigator.vibrate([40, 30, 80]);
+  }
+};
+</script>
+
+</body>
+</html>
